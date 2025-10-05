@@ -4,7 +4,7 @@ export default function DisplayWeather({ weather }) {
   return (
     <>
       {weather && (
-        <div className="bg-gradient-to-b from-blue-400 to-blue-100 shadow-lg rounded-xl p-2 mt-10 text-center w-full max-w-sm md:max-w-md z-1">
+        <div className="bg-gradient-to-b from-blue-400 to-blue-100 shadow-lg rounded-xl p-2 mt-10 text-center w-[340px] md:w-[440px] z-1">
           <div>
             <p className="text-2xl">
               {weather.city}, {weather.country}
@@ -29,10 +29,20 @@ export default function DisplayWeather({ weather }) {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center md:items-start justify-center mx-5">
-              <p>Humidity: {weather.humidity}%</p>
-              <p>Wind velocity: {convertToKmh(weather.windSpeed)}Km/h</p>
-              <p>Wind direction: {getWindDirection(weather.windDir)}</p>
+            <div className="flex flex-col items-center md:items-center justify-center mx-5">
+              <p className="md:flex md:flex-col">
+                <span className="font-semibold mr-2">Humidity:</span>
+                {weather.humidity}%
+              </p>
+              <p className="md:flex md:flex-col">
+                <span className="font-semibold mr-2">Wind velocity:</span>
+                {convertToKmh(weather.windSpeed)}
+                Km/h
+              </p>
+              <p className="md:flex md:flex-col">
+                <span className="font-semibold mr-2">Wind direction:</span>
+                {getWindDirection(weather.windDir)}
+              </p>
             </div>
           </div>
         </div>

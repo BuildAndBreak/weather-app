@@ -2,7 +2,9 @@ export default function CityList({
   cityList,
   setCityList,
   setPickedCity,
+  setSelectedCity,
   setCity,
+  setError,
 }) {
   return (
     <>
@@ -19,9 +21,10 @@ export default function CityList({
                   lon: city.lon,
                 });
                 setCity(`${city.name}, ${city.country}`);
+                setSelectedCity(`${city.name}, ${city.country}`);
                 setCityList([]);
-              }}
-            >
+                setError(null);
+              }}>
               {city.name}, {city.country}
             </li>
           ))}
