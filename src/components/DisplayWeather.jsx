@@ -15,7 +15,7 @@ export default function DisplayWeather({ weather }) {
               <span className="px-2">{weather.localTime}</span>
             </div>
             <p></p>
-            <p>{weather.description}</p>
+            <p className="font-semibold my-2">{weather.description}</p>
           </div>
           <div className="flex flex-col md:flex-row justify-between my-2">
             <div className="flex items-center justify-center">
@@ -25,7 +25,8 @@ export default function DisplayWeather({ weather }) {
                   {weather.temp.toFixed(1)}°C
                 </p>
                 <p className="text-sm mt-1">
-                  Feels Like: {weather.feelsLike.toFixed(1)}°C
+                  <span className="font-semibold mr-1">Feels Like:</span>
+                  {weather.feelsLike.toFixed(1)}°C
                 </p>
               </div>
             </div>

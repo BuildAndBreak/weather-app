@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import CityInput from "./components/CityInput";
 import DisplayWeather from "./components/DisplayWeather";
 import CityList from "./components/CityList";
@@ -12,6 +11,7 @@ function App() {
   const [pickedCity, setPickedCity] = useState(null);
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const { cityList, setCityList } = useCitySearch({
     city,
@@ -30,18 +30,19 @@ function App() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center z-10">
-      <div className="absolute inset-0 bg-[url('/bg-mobile.jpg')] opacity-80"></div>
+      <div className="absolute inset-0 bg-[url('/bg.jpg')] opacity-80"></div>
+
       <div className="flex flex-col items-center z-10">
         <div className="relative">
           <img
             className="absolute w-100 scale-140 top-4 left-2 rotate-10"
             src="/rainbow.png"
-            alt="rainbow image"
+            alt="decorative rainbow illustration"
           />
           <img
             className="w-50 relative"
             src="/weather.png"
-            alt="weather image"
+            alt="decorative weather illustration"
           />
         </div>
 
@@ -52,6 +53,12 @@ function App() {
           setCity={setCity}
           error={error}
           setError={setError}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          setPickedCity={setPickedCity}
+          setSelectedCity={setSelectedCity}
+          cityList={cityList}
+          setCityList={setCityList}
         />
 
         <CityList
@@ -61,11 +68,14 @@ function App() {
           setSelectedCity={setSelectedCity}
           setCity={setCity}
           setError={setError}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
         />
 
         <button
           onClick={fetchWeather}
-          className="w-full bg-blue-500 text-white px-4 py-2 m-2 rounded hover:bg-blue-600 cursor-pointer">
+          className="w-full bg-blue-500 text-white px-4 py-2 m-2 rounded hover:bg-blue-600 transition-all hover:scale-102 duration-350 shadow-lg cursor-pointer"
+          aria-label="Search weather for selected city">
           Search
         </button>
 
