@@ -41,7 +41,7 @@ Features:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Weather App](https://weather-app-bnb.netlify.app/)
 
 ## My process
 
